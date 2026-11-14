@@ -1,0 +1,12 @@
+/target
+/dist
+*.tmp
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+*secret*
+*token*
+!**/02-design-tokens/
+!**/02-design-tokens/**

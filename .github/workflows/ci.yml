@@ -1,0 +1,47 @@
+# ffp: FFP-JIVA-CI content-pipeline yaml
+name: Jivascriptocle Polyglot Compiler & Proof CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-verify:
+    name: Rust AST Transpiler, C++ SIMD Kernel & Kamadhenu Bundle Gate
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run Cargo Unit & Integration Tests
+        run: cargo test --all-targets
+
+      - name: Verify 5-Target Polyglot Transpilation Bundle
+        run: |
+          cargo build
+          python3 python/kamadhenu_materializer.py examples/sovereign_escrow.jiva --bin target/debug/jivascriptocle --out /tmp/jiva-bundle
+          test -f /tmp/jiva-bundle/generated_contract.rs
+          test -f /tmp/jiva-bundle/generated_contract.zig
+          test -f /tmp/jiva-bundle/generated_contract.ml
+          test -f /tmp/jiva-bundle/generated_contract.ts
+          test -f /tmp/jiva-bundle/generated_module.nix
+          test -f /tmp/jiva-bundle/kamadhenu_manifest.json
+
+      - name: Compile & Execute C++ AVX2 Ternary SIMD Kernel
+        run: |
+          g++ -O3 -std=c++17 polyglot/cpp/bitnet_simd_kernel.cpp -o /tmp/bitnet_simd_kernel
+          /tmp/bitnet_simd_kernel

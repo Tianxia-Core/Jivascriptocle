@@ -1,0 +1,25 @@
+# ffp: FFP-JIVA-MANIFEST declarative toml
+[package]
+name = "jivascriptocle"
+version = "1.2.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["Collins Takem <collinstaken525-cloud@users.noreply.github.com>"]
+description = "Deterministic Neurosymbolic Polyglot AST Transpiler, TOON Schema Compiler, Artificial Kenning IR & ARSI Proof Engine"
+repository = "https://github.com/Tianxia-Core/Jivascriptocle"
+homepage = "https://rasaxmachina.com"
+keywords = ["compiler", "ast", "transpiler", "neurosymbolic", "polyglot"]
+categories = ["compilers", "parser-implementations", "cryptography"]
+
+[dependencies]
+blake3 = { version = "1.8", features = ["std", "serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[lib]
+name = "jivascriptocle"
+path = "src/lib.rs"
+
+[[bin]]
+name = "jivascriptocle"
+path = "src/bin/jivascriptocle.rs"

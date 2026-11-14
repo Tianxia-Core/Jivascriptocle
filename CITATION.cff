@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use Jivascriptocle in academic or systems research, please cite it as follows."
+title: "Jivascriptocle: Deterministic Neurosymbolic Polyglot AST Transpiler and ARSI Attribution Engine"
+authors:
+  - family-names: "Takem"
+    given-names: "Collins"
+version: "1.2.0"
+date-released: "2026-11-14"
+license: "Apache-2.0"
+repository-code: "https://github.com/Tianxia-Core/Jivascriptocle"
+url: "https://rasaxmachina.com"

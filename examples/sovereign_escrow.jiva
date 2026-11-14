@@ -1,0 +1,21 @@
+# ffp: FFP-JIVA-EXAMPLE-ESCROW contract-adjacent jiva
+# Sovereign Four-Way Settlement & Margin Invariant Contract
+
+module SovereignEscrow @domain(Mahasarasvati) @ffp(FFP-ESCROW-WIRE) {
+    kenning TETRA-SEAL:MERKLE-4WAY = "Four-way double-entry settlement reconciliation anchored by deterministic SHA-256 and BLAKE3 Merkle proofs";
+
+    record SettlementFrame {
+        epoch_id: u64,
+        hhi_concentration: f64,
+        daily_drain_ratio: f64,
+        reconciliation_delta: f64,
+        kyb_attested: bool,
+    }
+
+    invariant Stratum0SettlementGate(SettlementFrame) {
+        hhi_concentration <= 0.65;
+        daily_drain_ratio <= 0.45;
+        reconciliation_delta == 0.0;
+        kyb_attested == true;
+    }
+}
