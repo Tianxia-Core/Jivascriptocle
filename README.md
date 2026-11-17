@@ -11,8 +11,30 @@
   [![FFP Bounded](https://img.shields.io/badge/DSS--14.2-8%2F8%20FFPs%20Bounded-0ea5e9?style=flat-square)](#architectural-fitness-decomposition-8-ffps)
 </div>
 
+<!-- BUILD_LAW_SHOWCASE_START -->
+
 ---
 
+## 🌍 In Plain English — What `Jivascriptocle` Is & Why It Matters (Layman's Guide)
+
+- **The Everyday Problem:** When software teams use multiple programming languages—say Rust for speed, OCaml for safety rules, and TypeScript for web screens—keeping data formats synchronized across them by hand breeds subtle, expensive bugs.
+- **How It Works (Without the Jargon):** `Jivascriptocle` lets engineers define a capability contract once in a clean specification (`.jiva`) and deterministically compiles it into synchronized **Rust, Zig, OCaml, TypeScript, and Nix** code with zero AI guesswork.
+- **Why It Is Different:** Unlike LLM code translators that produce slightly different output every run, `Jivascriptocle` is a deterministic compiler (`Apache-2.0`) embodying Pillar 2 of **[Build Law](https://github.com/Tianxia-Core/Build-Law)**.
+- **How It Benefits You:** Teams gain polyglot performance and type safety across their entire stack without maintaining five duplicate codebases by hand.
+- **How to Install & Use It in 60 Seconds:** Clone the repo and run `cargo test && cargo build --release` (or `nix build`) to compile `.jiva` specifications locally.
+
+---
+
+## 🏛️ Governed by [`Build Law`](https://github.com/Tianxia-Core/Build-Law) — Engineering Philosophy & Stakeholder Pathways
+
+This repository is a live production showcase of **[`Build Law`](https://github.com/Tianxia-Core/Build-Law)**—the open-source (`MIT`) **4-Pillar, 14-Gate Constitutional Engineering & `5.0×–8.8×` Token-Efficiency Standard** created by **[Collins Takem](https://rasaxmachina.com/collins)** (**RASA-X-MACHINA**):
+- **Developers & AI Builders:** Drop **[`Build Law`](https://github.com/Tianxia-Core/Build-Law)** into Claude Code, Cursor, OpenCode, VS Code (`.vsix`), GitHub Copilot, Windsurf, Cline, Aider, or any chat LLM in 60 seconds.
+- **CTOs & B2B Engineering Leaders:** Need similar `Rust`/`Go`/`Nix`/Security/FinOps rigor applied to your infrastructure? Scope a fixed-price **72-Hour `VRTTI` Architecture Sprint** at **[vrtti.rasaxmachina.com](https://vrtti.rasaxmachina.com)**.
+- **Investors, Researchers, Press & Executive Hiring Committees:** Inspect our cryptographic release proofs across **[`@Tianxia-Core`](https://github.com/Tianxia-Core)**, press assets at **[rasaxmachina.com/press](https://rasaxmachina.com/press)**, and founder dossier at **[rasaxmachina.com/collins](https://rasaxmachina.com/collins)**.
+
+<!-- BUILD_LAW_SHOWCASE_END -->
+
+---
 ## Overview
 
 **Jivascriptocle** is the open-source (**Apache-2.0**) neurosymbolic interface compiler and polyglot intermediate representation (IR) engine created by **RASA-X-MACHINA** for **tianxiaOS**.
