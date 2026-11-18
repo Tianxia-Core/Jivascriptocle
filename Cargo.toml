@@ -1,7 +1,7 @@
 # ffp: FFP-JIVA-MANIFEST declarative toml
 [package]
 name = "jivascriptocle"
-version = "1.2.0"
+version = "1.3.0"
 edition = "2021"
 license = "Apache-2.0"
 authors = ["Collins Takem <collinstaken525-cloud@users.noreply.github.com>"]

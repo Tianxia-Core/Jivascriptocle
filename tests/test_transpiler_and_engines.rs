@@ -1,8 +1,11 @@
 // ffp: FFP-JIVA-TEST-TRANSPILER edge-agent rust
 use jivascriptocle::{
-    compile_jiva_source, parse_jiva_module, ArtificialKenningEngine, JivaslokanHuberProbe,
+    compile_jiva_source, compile_module_to_toon, generate_clean_starter_jiva,
+    materialize_all_targets, parse_jiva_module, ArtificialKenningEngine, JivaslokanHuberProbe,
     OracularEngine, Stratum0Facts, TargetLang,
 };
+use std::env;
+use std::fs;
 
 const SAMPLE_JIVA: &str = r#"
 module SovereignEscrow @domain(Mahasarasvati) @ffp(FFP-ESCROW-WIRE) {
@@ -119,4 +122,46 @@ fn test_ak_engine_oracular_and_jivaslokan_probe() {
     let tripped = probe.evaluate_hidden_state(&spiked, &safe);
     assert!(!tripped.safe);
     assert!(tripped.circuit_breaker_tripped);
+}
+
+#[test]
+fn test_toon_compiler_c_abi_offsets_and_token_savings() {
+    let ast = parse_jiva_module(SAMPLE_JIVA).expect("valid .jiva AST");
+    let toon = compile_module_to_toon(&ast);
+    assert!(toon.toon_text.contains("@jiva.toon/v1 module=SovereignEscrow"));
+    assert!(toon.toon_text.contains("@rec SettlementFrame[32B]"));
+    assert!(toon.byte_savings_pct > 30.0);
+    assert_eq!(toon.records[0].total_padded_bytes, 32);
+    assert_eq!(toon.records[0].fields[3].byte_offset, 24);
+}
+
+#[test]
+fn test_kamadhenu_materialize_all_six_targets_and_manifest() {
+    let tmp = env::temp_dir().join(format!("jiva_kamadhenu_test_{}", std::process::id()));
+    let _ = fs::remove_dir_all(&tmp);
+    let manifest = materialize_all_targets(SAMPLE_JIVA, &tmp).expect("materialize_all_targets");
+    assert_eq!(manifest.outputs.len(), 6);
+    assert!(tmp.join("kamadhenu_manifest.json").is_file());
+    for item in &manifest.outputs {
+        assert!(tmp.join(&item.relative_file).is_file());
+        assert_eq!(item.blake3_hex.len(), 64);
+    }
+    let _ = fs::remove_dir_all(&tmp);
+}
+
+#[test]
+fn test_clean_starter_jiva_roundtrip_across_all_targets() {
+    let starter = generate_clean_starter_jiva("EnterpriseMeshVault");
+    let ast = parse_jiva_module(&starter).expect("starter schema must parse cleanly");
+    assert_eq!(ast.name, "EnterpriseMeshVault");
+    for target in [
+        TargetLang::Rust,
+        TargetLang::Zig,
+        TargetLang::OCaml,
+        TargetLang::TypeScript,
+        TargetLang::Nix,
+    ] {
+        let code = compile_jiva_source(&starter, target).expect("transpile starter");
+        assert!(!code.is_empty());
+    }
 }

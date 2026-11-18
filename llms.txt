@@ -1,0 +1,8 @@
+# Jivascriptocle (v1.3.0) — Neurosymbolic Polyglot AST Transpiler, TOON Compiler & ARSI Verifier (Apache-2.0)
+
+> Deterministic Rust compiler & MCP server engineered by Collins Takem (RASA-X-MACHINA · tianxiaOS). Compiles single `.jiva` contracts into Rust, Zig, OCaml, TypeScript, Nix, and Token-Optimized Object Notation (`TOON`) with BLAKE3 AST manifests, AK-Shield adversarial de-kenning, Oracular ARSI proof checking, and Jivaslokan Huber activation probes.
+
+- Repository: https://github.com/Tianxia-Core/Jivascriptocle
+- Companion Constitution: https://github.com/Tianxia-Core/Build-Law
+- Companion Build Manager: https://github.com/Tianxia-Core/nimbus2
+- Companion Pre-Build Sizing: https://github.com/Tianxia-Core/FC-Estimator

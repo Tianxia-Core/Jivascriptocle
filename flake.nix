@@ -19,7 +19,7 @@
         {
           default = pkgs.rustPlatform.buildRustPackage {
             pname = "jivascriptocle";
-            version = "1.2.0";
+            version = "1.3.0";
             src = self;
             cargoLock.lockFile = ./Cargo.lock;
             meta = with pkgs.lib; {

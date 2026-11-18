@@ -5,6 +5,7 @@
 
   **Deterministic Neurosymbolic Polyglot AST Transpiler, `TOON` Wire-Contract Compiler, Artificial Kenning (`AK`) IR & Formal `ARSI` Attribution Engine**
 
+  [![Release](https://img.shields.io/badge/release-v1.3.0-00f59b?style=flat-square)](https://github.com/Tianxia-Core/Jivascriptocle/releases/tag/v1.3.0)
   [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-10b981?style=flat-square)](LICENSE)
   [![Tier 1: Core Compiler](https://img.shields.io/badge/Stratum-Tier%201%20Core%20Framework-c9a84c?style=flat-square)](https://github.com/Tianxia-Core/TianxiaOS)
   [![Nix Flake](https://img.shields.io/badge/Nix-Flake%20Normalized-5277C3?style=flat-square)](flake.nix)
@@ -51,21 +52,30 @@ In multi-language distributed systems, security boundaries fail when wire schema
 
 ## Quick Start
 
-### 1. Run via Cargo
+### 1. Run via Signed Binary or Cargo (`v1.3.0`)
 ```bash
+# Bootstrap a fresh, zero-PII Clean-Room .jiva starter contract in 1 millisecond
+jivascriptocle init ./my-schemas --name EnterpriseVault
+
 # Validate a .jiva neurosymbolic contract and print its BLAKE3 AST seal
-cargo run -- check examples/sovereign_escrow.jiva
+jivascriptocle check examples/sovereign_escrow.jiva
 
-# Transpile into any of the 5 target languages
-cargo run -- transpile --target rust  examples/sovereign_escrow.jiva
-cargo run -- transpile --target zig   examples/sovereign_escrow.jiva
-cargo run -- transpile --target ocaml examples/sovereign_escrow.jiva
-cargo run -- transpile --target ts    examples/sovereign_escrow.jiva
-cargo run -- transpile --target nix   examples/sovereign_escrow.jiva
+# Compile Token-Optimized Object Notation (TOON) + deterministic C-ABI byte offsets
+jivascriptocle toon examples/sovereign_escrow.jiva --json
 
-# Materialize a full SHA-256 attested 5-language bundle via Kamadhenu
-cargo build
-python3 python/kamadhenu_materializer.py examples/sovereign_escrow.jiva
+# Transpile into any of the 6 targets (rust | zig | ocaml | ts | nix | toon)
+jivascriptocle transpile --target rust  examples/sovereign_escrow.jiva
+jivascriptocle transpile --target zig   examples/sovereign_escrow.jiva
+jivascriptocle transpile --target ocaml examples/sovereign_escrow.jiva
+jivascriptocle transpile --target ts    examples/sovereign_escrow.jiva
+jivascriptocle transpile --target nix   examples/sovereign_escrow.jiva
+jivascriptocle transpile --target toon  examples/sovereign_escrow.jiva
+
+# Native Rust Kamadhenu Materializer: emit all 6 targets + BLAKE3 kamadhenu_manifest.json (zero Python required)
+jivascriptocle build-all examples/sovereign_escrow.jiva --out-dir dist/polyglot
+
+# Start zero-token Model Context Protocol (MCP) JSON-RPC 2.0 server for Claude Code / Cursor / OpenCode
+jivascriptocle mcp-stdio
 
 # Execute the full unit & integration test suite
 cargo test --all-targets

@@ -10,6 +10,7 @@
 pub mod jivaslokan;
 pub mod kenning;
 pub mod oracular;
+pub mod toon;
 pub mod transpiler;
 
 pub use jivaslokan::{JivaslokanHuberProbe, ProbeEvaluationResult};
@@ -18,6 +19,10 @@ pub use kenning::{
     ShieldScanResult,
 };
 pub use oracular::{OmniLatticeScores, OracularArsiVerdict, OracularEngine, Stratum0Facts};
+pub use toon::{
+    compile_module_to_toon, generate_clean_starter_jiva, materialize_all_targets,
+    KamadhenuManifest, KamadhenuTargetFile, ToonFieldLayout, ToonRecordSpec, ToonSchemaArtifact,
+};
 pub use transpiler::{
     compile_jiva_source, parse_jiva_module, transpile_module, CompileError, ComparisonOp,
     FieldDecl, InvariantClause, InvariantDecl, JivaModule, KenningDecl, PrimitiveType, RecordDecl,
